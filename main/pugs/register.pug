@@ -1,0 +1,17 @@
+| {% extends 'base.html' %}
+
+| {% block title %}Регестрация{% endblock title %}
+
+| {% block main %}
+section.register.container-fluid
+  div.container-fluid
+    form.register.mx-auto
+      | {% csrf_token %}
+      | {% for field in form %}
+      div.mb-3
+        label(class="form-label" for="{{ field.auto_id }}") {{ field.label }}
+        | {{ field }}
+      | {% endfor %}
+      div
+        button(type="submit" class="btn btn-primary") Зарегаться
+| {% endblock main %}
