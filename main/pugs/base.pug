@@ -23,7 +23,7 @@ html(lang="en")
             li.nav-item
               a.nav-link(href="{% url 'register' %}") Регестрация
             li.nav-item
-              a.nav-link(href="/") Авторизация
+              a.nav-link(href="{% url 'login' %}") Авторизация
       main
         | {% block main %}
         | {% endblock main %}

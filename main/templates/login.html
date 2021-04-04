@@ -1,0 +1,16 @@
+
+{% extends 'base.html' %}
+{% block title %}Авторизация{% endblock title %}
+{% block main %}
+<section class="login">
+  <div>
+    <form action="/login/" method="post">
+      <h2>Авторизация </h2>{% csrf_token %}
+      {% for field in form %}
+      <div class="mb-3">
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>{{ field }}
+      </div>{% endfor %}
+      <button class="btn btn-primary" type="submit">Залогиниться</button>
+    </form>
+  </div>
+</section>{% endblock main %}

@@ -4,7 +4,11 @@
 {% block main %}
 <section class="register container-fluid">
   <div class="container-fluid">
-    <form class="register mx-auto">
+    <form class="register mx-auto" method="POST" action="{% url 'register' %}">
+      <h2>Регестрация</h2>{% if form.errors %}
+      <div class="mb-3">
+        <p class="text-danger">произошла ошибка</p>
+      </div>{% endif %}
       {% csrf_token %}
       {% for field in form %}
       <div class="mb-3">

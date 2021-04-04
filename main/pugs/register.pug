@@ -5,7 +5,12 @@
 | {% block main %}
 section.register.container-fluid
   div.container-fluid
-    form.register.mx-auto
+    form(method="POST" action="{% url 'register' %}").register.mx-auto
+      h2 Регестрация
+      | {% if form.errors %}
+      div.mb-3
+        p.text-danger произошла ошибка
+      | {% endif %}
       | {% csrf_token %}
       | {% for field in form %}
       div.mb-3

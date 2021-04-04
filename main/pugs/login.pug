@@ -1,0 +1,17 @@
+| {% extends 'base.html' %}
+
+| {% block title %}Авторизация{% endblock title %}
+
+| {% block main %}
+section.login
+  div
+    form(action="/login/" method="post")
+      h2 Авторизация 
+      | {% csrf_token %}
+      | {% for field in form %}
+      div.mb-3
+        label(class="form-label" for="{{ field.auto_id }}") {{ field.label }}
+        | {{ field }}
+      | {% endfor %}
+      button(type="submit" class="btn btn-primary") Залогиниться
+| {% endblock main %}
