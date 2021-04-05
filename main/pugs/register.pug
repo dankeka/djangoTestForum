@@ -5,7 +5,7 @@
 | {% block main %}
 section.register.container-fluid
   div.container-fluid
-    form(method="POST" action="{% url 'register' %}").register.mx-auto
+    form(method="POST" action="{% url 'main:register' %}").register.mx-auto
       h2 Регестрация
       | {% if form.errors %}
       div.mb-3

@@ -17,8 +17,11 @@
         <div class="collapse navbar-collapse" style="padding-left: 12px;" id="headerMenu">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="/">Главное</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Регестрация</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Авторизация</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'main:register' %}">Регестрация</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'main:login' %}">Авторизация</a></li>{% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'main:logout' %}">Выйти</a></li>  {% if user.is_superuser %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Админка</a></li>  {% endif %}
+            {% endif %}
           </ul>
         </div>
       </header>

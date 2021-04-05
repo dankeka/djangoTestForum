@@ -21,9 +21,17 @@ html(lang="en")
             li.nav-item
               a.nav-link(href="/") Главное
             li.nav-item
-              a.nav-link(href="{% url 'register' %}") Регестрация
+              a.nav-link(href="{% url 'main:register' %}") Регестрация
             li.nav-item
-              a.nav-link(href="{% url 'login' %}") Авторизация
+              a.nav-link(href="{% url 'main:login' %}") Авторизация
+            | {% if user.is_authenticated %}
+            li.nav-item
+              a.nav-link(href="{% url 'main:logout' %}") Выйти
+            |   {% if user.is_superuser %}
+            li.nav-item
+              a.nav-link(href="{% url 'admin:index' %}") Админка
+            |   {% endif %}
+            | {% endif %}
       main
         | {% block main %}
         | {% endblock main %}

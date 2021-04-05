@@ -3,10 +3,14 @@
 | {% block title %}Авторизация{% endblock title %}
 
 | {% block main %}
-section.login
-  div
-    form(action="/login/" method="post")
+section.login.container-fluid
+  div.container-fluid
+    form(action="{% url 'main:login' %}" method="post").mx-auto
       h2 Авторизация 
+      | {% if form.errors %}
+      div.mb-3
+        p.text-danger произошла ошибка
+      | {% endif %}
       | {% csrf_token %}
       | {% for field in form %}
       div.mb-3

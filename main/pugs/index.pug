@@ -3,5 +3,14 @@
 | {% block title %}Главное{% endblock title %}
 
 | {% block main %}
-h1 Hello world!
+section.main
+  | {% if sections %}
+  |  {% for s in sections %}
+  div.section
+    h1 
+      a(href="{% url 'main:section' s.pk %}" class="text-dark text-decoration-none") {{s.title}}
+  |  {% endfor %}
+  | {% else %}
+  h2.display-5 Тут пусто :(
+  | {% endif %}
 | {% endblock main %}
