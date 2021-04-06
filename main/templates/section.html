@@ -2,14 +2,13 @@
 {% extends 'base.html' %}
 {% block title %}Секция {{section.title}}{% endblock title %}
 {% block main %}
-<section class="section">
+<section class="section mx-auto">
   <h1>{{section.title}}</h1>
-  <hr/>
   <div>
     {% if themes %}
      {% for t in themes %}
     <div class="theme px-2">
-      <h2><a class="text-dark text-decoration-none" href="{% url 'main:theme' t.pk %}">{{t.title}}</a></h2>
+      <h2><a class="text-light text-decoration-none" href="{% url 'main:theme' t.pk %}">{{t.title}}</a></h2>
     </div> {% endfor %}
     {% else %}
     <h1 class="display-5">тут пусто</h1>{% endif %}

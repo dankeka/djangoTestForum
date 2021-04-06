@@ -3,14 +3,15 @@
 | {% block title %}Главное{% endblock title %}
 
 | {% block main %}
-section.main
+section.main.mx-auto
+  h1 Секции
   | {% if sections %}
   |  {% for s in sections %}
   div.section
-    h1 
+    h2
       a(href="{% url 'main:section' s.pk %}" class="text-dark text-decoration-none") {{s.title}}
   |  {% endfor %}
   | {% else %}
-  h2.display-5 Тут пусто :(
+  h1.display-5 Тут пусто :(
   | {% endif %}
 | {% endblock main %}

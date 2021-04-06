@@ -1,9 +1,86 @@
-section.register form {
-  width: 70%;
-  max-width: 700px; }
+body {
+  font-family: "Noto Sans JP", sans-serif !important; }
+  body header {
+    box-shadow: 0 0 3px 6px black; }
+  body main > section {
+    padding-top: 10px;
+    box-shadow: 0 0 4px 12px black;
+    min-height: 900px;
+    max-width: 700px;
+    margin-bottom: 0; }
+  body footer {
+    background-color: black;
+    padding: 10px;
+    box-shadow: 0 0 4px 12px black;
+    max-width: 700px; }
+    body footer div {
+      width: 100%; }
+      body footer div p {
+        width: 100%;
+        text-align: center;
+        font-weight: 100;
+        color: #aaa !important; }
 
-section.login form {
-  width: 70%;
+section.register {
+  box-shadow: none;
+  margin-top: 10px; }
+  section.register form {
+    width: 70%;
+    max-width: 700px; }
+
+section.login {
+  box-shadow: none;
+  margin-top: 10px; }
+  section.login form {
+    width: 70%;
+    max-width: 700px; }
+
+section.main {
+  background: black;
+  padding-top: 5px;
+  padding-bottom: 20px; }
+  section.main h1 {
+    color: white !important;
+    margin-left: 10px; }
+  section.main .section:nth-child(odd) {
+    background: #121213; }
+  section.main .section:nth-child(even) {
+    background: #0d0e0f; }
+  section.main .section:hover {
+    background: white; }
+    section.main .section:hover h2 a {
+      color: black !important; }
+  section.main .section {
+    transition: 0.2s;
+    padding: 7px 5px 7px 15px;
+    box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.5); }
+    section.main .section h2 a {
+      color: #ccc !important;
+      font-weight: 300; }
+
+section.section {
+  background: black;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  min-height: 600px;
   max-width: 700px; }
+  section.section h1 {
+    color: white !important;
+    margin-left: 10px; }
+  section.section .theme:nth-child(odd) {
+    background: #121213; }
+  section.section .theme:nth-child(even) {
+    background: #0d0e0f; }
+  section.section .theme:hover {
+    background: white; }
+    section.section .theme:hover h2 a {
+      color: black !important; }
+  section.section .theme {
+    transition: 0.2s;
+    padding: 7px 5px 7px 15px;
+    box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.5); }
+    section.section .theme h2 a {
+      color: #ddd !important;
+      font-weight: 300; }
 
 /*# sourceMappingURL=style.css.map */
