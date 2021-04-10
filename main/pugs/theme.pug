@@ -1,0 +1,41 @@
+| {% extends 'base.html' %}
+
+| {% block title %}{{theme.title}}{% endblock title %}
+
+| {% block main %}
+section.theme.mx-auto
+  div.mb-4
+    h1.themeTitle {{theme.title}}
+    a(href="#addMsgBtn" class="text-decoration-none link-info") Добавить сообщение
+
+  | {% if messages %}
+  div.messages.mb-5
+    |  {% for m in messages %}
+    div.msg
+      div.userContent
+        strong {{m.user.username}}
+      div.text
+        p {{m.text}}
+    |  {% endfor %}
+  | {% endif %}
+
+  | {% if user.is_authenticated %}
+  div.addMsg
+    form(action="{% url 'main:addMsg' %}" method="post")
+      div.mb-3
+        h2 Добавить сообщение
+        a(href="#header" class="text-decoration-none link-info") Наверх
+      | {% if form.errors %}
+      div.mb-3
+        p.text-danger произошла ошибка
+      | {% endif %}
+      | {% csrf_token %}
+      | {% for field in form %}
+      div.mb-3
+        label(class="form-label" for="{{ field.auto_id }}") {{ field.label }}
+        | {{ field }}
+      | {% endfor %}
+      input(type="hidden" value="{{theme.pk}}" name="themePk")
+      button(type="submit" class="btn btn-primary" id="addMsgBtn") ОТПРАВИТЬ
+  | {% endif %}
+| {% endblock main %}

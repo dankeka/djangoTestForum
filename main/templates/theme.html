@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% block title %}{{theme.title}}{% endblock title %}
+{% block main %}
+<section class="theme mx-auto">
+  <div class="mb-4">
+    <h1 class="themeTitle">{{theme.title}}</h1><a class="text-decoration-none link-info" href="#addMsgBtn">Добавить сообщение</a>
+  </div>{% if messages %}
+  <div class="messages mb-5"> {% for m in messages %}
+    <div class="msg">
+      <div class="userContent"><strong>{{m.user.username}}</strong></div>
+      <div class="text">
+        <p>{{m.text}}</p>
+      </div>
+    </div> {% endfor %}
+  </div>{% endif %}
+  {% if user.is_authenticated %}
+  <div class="addMsg">
+    <form action="{% url 'main:addMsg' %}" method="post">
+      <div class="mb-3">
+        <h2>Добавить сообщение</h2><a class="text-decoration-none link-info" href="#header">Наверх</a>
+      </div>{% if form.errors %}
+      <div class="mb-3">
+        <p class="text-danger">произошла ошибка</p>
+      </div>{% endif %}
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="mb-3">
+        <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>{{ field }}
+      </div>{% endfor %}
+      <input type="hidden" value="{{theme.pk}}" name="themePk"/>
+      <button class="btn btn-primary" type="submit" id="addMsgBtn">ОТПРАВИТЬ</button>
+    </form>
+  </div>{% endif %}
+</section>{% endblock main %}

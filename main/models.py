@@ -28,14 +28,15 @@ class Theme(models.Model):
     return self.title
   
 class Message(models.Model):
-  text = models.TextField('Тект')
-  user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Сообщение')
+  text = models.TextField('Текст')
+  theme = models.ForeignKey(Theme, on_delete=models.PROTECT, verbose_name='Тема')
+  user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Пользователь')
   date = models.DateTimeField('Дата создания', auto_now_add=True)
   
   class Meta:
     verbose_name = 'Сообщение'
     verbose_name_plural = 'Сообщения'
-    ordering = ['-date']
+    ordering = ['date']
     
   def __str__(self):
-    return self.user
+    return self.user.username

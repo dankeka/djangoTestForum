@@ -59,4 +59,32 @@ def section(request, pk):
 
 
 def theme(request, pk):
-  pass
+  theme = md.Theme.objects.get(pk = pk)
+  
+  messages = md.Message.objects.filter(theme = theme)
+  
+  form = forms.AddMsgForm()
+  
+  context = {
+    'theme': theme,
+    'messages': messages,
+    'form': form
+  }
+  return render(request, "theme.html", context)
+
+
+def addMsg(request):
+  if request.user.is_authenticated:
+    themePk = request.POST["themePk"]
+    text = request.POST["text"]
+    user = request.user
+    
+    theme = md.Theme.objects.get(pk = themePk)
+    
+    newMsg = md.Message.objects.create(theme=theme, user=user, text=text)
+    newMsg.save()
+    
+    return HttpResponseRedirect(f'/theme/{themePk}/')
+  else:
+    raise Http404
+  

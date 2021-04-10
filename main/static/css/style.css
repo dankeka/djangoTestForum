@@ -83,4 +83,26 @@ section.section {
       color: #ddd !important;
       font-weight: 300; }
 
+section.theme {
+  background: black;
+  color: white !important; }
+  section.theme .messages {
+    margin-bottom: 20px !important; }
+    section.theme .messages .msg {
+      border-block-start: 1px solid white !important;
+      padding: 7px 5px 0 5px;
+      border-block-end: 1px solid white !important; }
+  section.theme .addMsg textarea {
+    background: black;
+    color: white; }
+  section.theme .addMsg button[type="submit"] {
+    padding: 6px 6px 7px 6px;
+    background: black;
+    color: white;
+    border: 1px solid white;
+    transition: 0.2s; }
+  section.theme .addMsg button[type="submit"]:hover {
+    border-color: #999;
+    color: #999; }
+
 /*# sourceMappingURL=style.css.map */
