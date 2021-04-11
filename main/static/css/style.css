@@ -75,6 +75,13 @@ section.section {
     background: white; }
     section.section .theme:hover h2 a {
       color: black !important; }
+  section.section .addTheme .modal .modal-content {
+    background: #222;
+    padding: 5px;
+    color: white; }
+    section.section .addTheme .modal .modal-content input {
+      background: black;
+      color: white; }
   section.section .theme {
     transition: 0.2s;
     padding: 7px 5px 7px 15px;

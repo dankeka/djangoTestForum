@@ -6,6 +6,38 @@
 section.section.mx-auto
   h1 {{section.title}}
   div
+    | {% if user.is_authenticated %}
+    div.addTheme
+      div.mb-2(style="margin-left: 10px")
+        a(data-bs-toggle="modal" data-bs-target="#addThemeModal" class="text-decoration-none link-info") Добавить тему
+    
+      div(class="modal fade" id="addThemeModal" tabindex="-1" aria-labelledby="addThemeModalLabel" aria-hidden="true")
+        div.modal-dialog
+          div.modal-content
+            form(method="post" action="{% url 'main:addTheme' %}")
+              div.modal-header
+                h5(class="modal-title" id="addThemeModalLabel") Добавить тему
+                button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+              div.modal-body
+                | {% if form.errors %}
+                div.mb-3
+                  p.text-danger произошла ошибка
+                | {% endif %}
+                | {% csrf_token %}
+                | {% for field in form %}
+                |   {% if field.field.widget.input_type != "hidden" %}
+                div.mb-3
+                  label(class="form-label" for="{{ field.auto_id }}") {{ field.label }}
+                  | {{ field }}
+                |   {% else %}
+                |     {{ field }}
+                |   {% endif %}
+                | {% endfor %}
+              div.modal-footer
+                div(class="btn-group" role="group")
+                  button(type="button" class="btn btn-outline-danger" data-bs-dismiss="modal") Закрыть
+                  button(type="submit" class="btn btn-outline-light") Создать
+    | {% endif %}
     | {% if themes %}
     |  {% for t in themes %}
     div.theme.px-2

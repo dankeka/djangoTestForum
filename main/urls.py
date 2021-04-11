@@ -11,4 +11,5 @@ urlpatterns = [
   path('section/<int:pk>/', views.section, name='section'),
   path('theme/<int:pk>/', views.theme, name='theme'),
   path('addMsg/', views.addMsg, name='addMsg'),
+  path('addTheme/', views.addTheme, name='addTheme'),
 ]

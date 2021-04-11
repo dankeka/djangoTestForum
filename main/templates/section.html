@@ -4,7 +4,42 @@
 {% block main %}
 <section class="section mx-auto">
   <h1>{{section.title}}</h1>
-  <div>
+  <div>{% if user.is_authenticated %}
+    <div class="addTheme">
+      <div class="mb-2" style="margin-left: 10px"><a class="text-decoration-none link-info" data-bs-toggle="modal" data-bs-target="#addThemeModal">Добавить тему</a></div>
+      <div class="modal fade" id="addThemeModal" tabindex="-1" aria-labelledby="addThemeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form method="post" action="{% url 'main:addTheme' %}">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addThemeModalLabel">Добавить тему</h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">{% if form.errors %}
+                <div class="mb-3">
+                  <p class="text-danger">произошла ошибка</p>
+                </div>{% endif %}
+                {% csrf_token %}
+                {% for field in form %}
+                  {% if field.field.widget.input_type != "hidden" %}
+                <div class="mb-3">
+                  <label class="form-label" for="{{ field.auto_id }}">{{ field.label }}</label>{{ field }}
+                </div>  {% else %}
+                    {{ field }}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-outline-danger" type="button" data-bs-dismiss="modal">Закрыть</button>
+                  <button class="btn btn-outline-light" type="submit">Создать</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>{% endif %}
     {% if themes %}
      {% for t in themes %}
     <div class="theme px-2">
